@@ -1,44 +1,39 @@
+-- lua/config/keymaps.lua
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Exit insert mode
-vim.keymap.set("i", "jj", "<ESC>", opts)
+-- Exit insert mode with jj
+map("i", "jj", "<Esc>", opts)
 
--- select current line in V-mode with vv
-vim.api.nvim_set_keymap("n", "vv", "0v$", opts)
+-- Window navigation
+map("n", "<C-h>", "<cmd>wincmd h<CR>", opts)
+map("n", "<C-j>", "<cmd>wincmd j<CR>", opts)
+map("n", "<C-k>", "<cmd>wincmd k<CR>", opts)
+map("n", "<C-l>", "<cmd>wincmd l<CR>", opts)
 
--- move selected lines in V-mode up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
--- Smart clear hightlight search
-vim.keymap.set("n", "<Esc>", function()
-  if vim.v.hlsearch == 1 then
-    vim.v.hlsearch = 0
-  else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
-  end
-end, { silent = true, desc = "Clear search highlight or behave as normal <Esc>" })
-
--- Delete single character without copying into register
-vim.keymap.set("n", "x", '"_x', opts)
+-- Move selected lines up/down
+map("v", "J", ":m '>+1<CR>gv=gv", opts)
+map("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Stay in indent mode
-vim.keymap.set("v", "<", "<gv", opts)
-vim.keymap.set("v", ">", ">gv", opts)
+map("v", "<", "<gv", opts)
+map("v", ">", ">gv", opts)
 
--- quit neovim
-vim.keymap.set(
-  { "v", "n" },
-  "<leader>qq",
-  "<cmd>qa<CR>",
-  { noremap = true, silent = true, desc = "quit (without save)" }
-)
-vim.keymap.set({ "v", "n" }, "<leader>qa", "<cmd>wqa<CR>", { noremap = true, silent = true, desc = "quit (save all)" })
+-- Quiting
+map("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit all (without save)", silent = true })
+map("n", "<leader>qa", "<cmd>wqa<CR>", { desc = "Quit all (save)", silent = true })
 
-vim.keymap.set("n", "<C-h>", "<cmd>wincmd h<CR>", opts)
-vim.keymap.set("n", "<C-j>", "<cmd>wincmd j<CR>", opts)
-vim.keymap.set("n", "<C-k>", "<cmd>wincmd k<CR>", opts)
-vim.keymap.set("n", "<C-l>", "<cmd>wincmd l<CR>", opts)
+-- Split window management
+map("n", "<leader>wv", "<C-w>v", { desc = "Split Vertically", silent = true })
+map("n", "<leader>wh", "<C-w>s", { desc = "Split Horizontally", silent = true })
+map("n", "<leader>we", "<C-w>=", { desc = "Equalize Splits", silent = true })
+map("n", "<leader>wx", ":close<CR>", { desc = "Close Split", silent = true })
 
--- <space>+y to yank the entire file
-vim.keymap.set("n", "<leader>y", ":%y<CR>", { desc = "Yank entire file" })
+-- Smart clear search highlight on <Esc>
+map("n", "<Esc>", function()
+  if vim.v.hlsearch == 1 then
+    vim.v.hlsearch = 0
+    return
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+end, { silent = true, desc = "Clear search highlight or behave as normal <Esc>" })

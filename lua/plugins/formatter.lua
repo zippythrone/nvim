@@ -16,4 +16,11 @@ return {
       },
     },
   },
+  keys = {{
+    "<leader>cf",
+    function()
+      require('conform').format()
+    end,
+    desc = "format"
+  }}
 }

@@ -13,7 +13,7 @@ vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
 -- File handling
-vim.opt.swapfile = false 
+vim.opt.swapfile = false
 vim.opt.writebackup = true
 vim.opt.undofile = true
 vim.opt.fileencoding = "utf-8"
@@ -32,10 +32,11 @@ vim.opt.termguicolors = true
 vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.cursorline = true
--- vim.opt.signcolumn = "yes"
--- vim.opt.signcolumn = "auto"
+vim.opt.signcolumn = "yes"
 
+-- show asci charaters as symbols
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-
+-- implement stack jump list
+-- vim.opt.jumplists = ""
