@@ -21,6 +21,6 @@ return {
     function()
       require('conform').format()
     end,
-    desc = "format"
+    desc = "LSP: format"
   }}
 }

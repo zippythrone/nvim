@@ -40,3 +40,9 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- implement stack jump list
 -- vim.opt.jumplists = ""
+--
+
+vim.o.winborder = 'rounded'
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
