@@ -5,11 +5,11 @@ local opts = { noremap = true, silent = true }
 -- Exit insert mode with jj
 map("i", "jj", "<Esc>", opts)
 
--- Window navigation
-map("n", "<C-h>", "<cmd>wincmd h<CR>", opts)
-map("n", "<C-j>", "<cmd>wincmd j<CR>", opts)
-map("n", "<C-k>", "<cmd>wincmd k<CR>", opts)
-map("n", "<C-l>", "<cmd>wincmd l<CR>", opts)
+-- -- Window navigation
+-- map("n", "<C-h>", "<cmd>wincmd h<CR>", opts)
+-- map("n", "<C-j>", "<cmd>wincmd j<CR>", opts)
+-- map("n", "<C-k>", "<cmd>wincmd k<CR>", opts)
+-- map("n", "<C-l>", "<cmd>wincmd l<CR>", opts)
 
 -- Move selected lines up/down
 map("v", "J", ":m '>+1<CR>gv=gv", opts)

@@ -32,3 +32,10 @@ vim.api.nvim_create_autocmd("User", {
       end
   end,
 })
+
+vim.api.nvim_create_autocmd(
+  { "FocusGained", "BufEnter", "InsertLeave", "CursorHold", "CursorHoldI" },
+  {
+    command = "checktime",
+  }
+)
