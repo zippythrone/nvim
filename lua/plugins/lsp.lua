@@ -1,14 +1,19 @@
 local servers = {
   "lua_ls",
   "stylua",
-  -- "pyrefly",
   "basedpyright",
   "ruff",
 }
 return {
   "mason-org/mason-lspconfig.nvim",
   dependencies = {
-    { "mason-org/mason.nvim", opts = {} },
+    {
+      "mason-org/mason.nvim",
+      config = function()
+        require('mason').setup({})
+        vim.keymap.set('n', '<leader>M', '<cmd>Mason<CR>', { noremap = true, silent = true })
+      end,
+    },
     "neovim/nvim-lspconfig",
   },
   config = function()

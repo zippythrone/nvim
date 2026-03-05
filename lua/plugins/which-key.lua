@@ -30,6 +30,7 @@ return {
       { "<leader>w", group = "window", icon = "" },
 
       { "<leader>?", icon = "" },
+      {"<leader>M", icon = "󰨺"}
     },
   },
 
