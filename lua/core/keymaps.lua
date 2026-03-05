@@ -29,6 +29,16 @@ map("n", "<leader>wh", "<C-w>s", { desc = "Split Horizontally", silent = true })
 map("n", "<leader>we", "<C-w>=", { desc = "Equalize Splits", silent = true })
 map("n", "<leader>wx", ":close<CR>", { desc = "Close Split", silent = true })
 
+-- save with Ctrl+s
+map({"n", "i"}, "<C-s>", "<cmd>w<CR>", opts)
+
+map("n", "<leader>yf", function()
+  local file = vim.fn.expand("%:p")
+  local root = vim.fs.root(file, { ".git" }) or vim.uv.cwd()
+  local relative = vim.fs.relpath(root, file) or vim.fn.fnamemodify(file, ":.")
+  vim.fn.setreg("+", relative .. ":" .. vim.fn.line("."))
+end, { desc = "Yank file path and line", silent = true })
+
 -- Smart clear search highlight on <Esc>
 map("n", "<Esc>", function()
   if vim.v.hlsearch == 1 then

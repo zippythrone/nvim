@@ -22,6 +22,13 @@ local keys = {
     desc = "Files",
   },
   {
+    "<leader>fl",
+    function()
+      Snacks.picker.lines()
+    end,
+    desc = "Grep Current files"
+  },
+  {
     "<leader><leader>",
     function()
       Snacks.picker.buffers()

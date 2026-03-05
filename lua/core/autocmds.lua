@@ -21,21 +21,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>cr", vim.lsp.buf.rename, "Rename")
     map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
     map("<leader>cl", "<cmd> LspInfo <CR>", "Lsp Info")
+    map("<leader>cR", "<cmd> LspRestart <CR>", "Lsp Restart")
   end,
 })
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "OilActionsPost",
-  callback = function(event)
-      if event.data.actions[1].type == "move" then
-          Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
-      end
-  end,
-})
+local uv = vim.uv or vim.loop
+local timer = uv.new_timer()
 
-vim.api.nvim_create_autocmd(
-  { "FocusGained", "BufEnter", "InsertLeave", "CursorHold", "CursorHoldI" },
-  {
-    command = "checktime",
-  }
-)
+timer:start(0, 500, function()
+  vim.schedule(function()
+    if vim.fn.mode() ~= "c" then
+      vim.cmd("checktime")
+    end
+  end)
+end)
