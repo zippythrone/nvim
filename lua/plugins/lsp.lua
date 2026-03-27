@@ -1,7 +1,8 @@
 local servers = {
   "lua_ls",
   "stylua",
-  "basedpyright",
+  -- "basedpyright",
+  "pyrefly",
   "ruff",
 }
 return {
