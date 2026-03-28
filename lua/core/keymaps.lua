@@ -5,12 +5,6 @@ local opts = { noremap = true, silent = true }
 -- Exit insert mode with jj
 map("i", "jj", "<Esc>", opts)
 
--- -- Window navigation
--- map("n", "<C-h>", "<cmd>wincmd h<CR>", opts)
--- map("n", "<C-j>", "<cmd>wincmd j<CR>", opts)
--- map("n", "<C-k>", "<cmd>wincmd k<CR>", opts)
--- map("n", "<C-l>", "<cmd>wincmd l<CR>", opts)
-
 -- Move selected lines up/down
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
@@ -20,7 +14,7 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Quiting
-map("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit all (without save)", silent = true })
+map("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit all", silent = true })
 map("n", "<leader>qa", "<cmd>wqa<CR>", { desc = "Quit all (save)", silent = true })
 
 -- Split window management

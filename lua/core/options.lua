@@ -30,7 +30,6 @@ vim.opt.sidescrolloff = 8
 -- Terminal and visual settings
 vim.opt.termguicolors = true
 vim.opt.wrap = false
-vim.opt.linebreak = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 

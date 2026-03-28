@@ -25,13 +25,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-local uv = vim.uv or vim.loop
-local timer = uv.new_timer()
-
-timer:start(0, 500, function()
-  vim.schedule(function()
-    if vim.fn.mode() ~= "c" then
-      vim.cmd("checktime")
-    end
-  end)
-end)
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  group = augroup("checktime"),
+  command = "checktime",
+})
